@@ -1,0 +1,24 @@
+.status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  color: #212121;
+  box-sizing: border-box;
+  margin: 8px;
+  padding: 8px;
+  max-height: 50%;
+  overflow-y: scroll;
+}
+
+.status ol {
+  margin: 0;
+}
+
+.controls {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  margin: 8px;
+  justify-content: space-between;
+}

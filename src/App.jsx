@@ -30,6 +30,8 @@ function Status(props) {
   );
 }
 
+const selectionSet = new Set();
+
 function App() {
   const [selection, setSelection] = useState([]);
 
@@ -38,17 +40,27 @@ function App() {
       return;
     }
     const feature = e.features[0];
-    setSelection((current) => [
-      ...current,
-      {
-        type: "Feature",
-        geometry: {
-          type: "Point",
-          coordinates: feature.geometry.coordinates,
+    const id = feature.properties.id;
+
+    if (selectionSet.has(id)) {
+      selectionSet.delete(id);
+
+      setSelection((current) => current.filter((i) => i.properties.id != id));
+    } else {
+      selectionSet.add(id);
+
+      setSelection((current) => [
+        ...current,
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: feature.geometry.coordinates,
+          },
+          properties: feature.properties,
         },
-        properties: feature.properties,
-      },
-    ]);
+      ]);
+    }
   };
 
   const handleCopyList = () => {

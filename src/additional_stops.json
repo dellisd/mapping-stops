@@ -1,0 +1,118 @@
+{
+  "type": "FeatureCollection",
+  "name": "additional",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CAMPEAU / WINTERSET",
+        "code": "????",
+        "id": "CWIN123"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.928818463226122, 45.304306421935365]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CAMPEAU / WINTERSET",
+        "code": "????",
+        "id": "CWIN456"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.92948857831874, 45.304306421935365]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CAMPEAU / DIDSBURY",
+        "code": "????",
+        "id": "DIDS123"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.920021873042245, 45.30699961284229]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CAMPEAU / DIDSBURY",
+        "code": "????",
+        "id": "DIDS456"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.919862321829726, 45.30755319734164]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TERRY FOX / DIDSBURY",
+        "code": "????",
+        "id": "TDID123"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.9223140921289, 45.30968706538296]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TERRY FOX / DIDSBERY",
+        "code": "????",
+        "id": "TDID456"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.921856711986322, 45.3099189620659]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ROTARY / LAGUNA",
+        "code": "????",
+        "id": "LAGUNA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.59339926750566, 45.329073343467698]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ROTARY / FERNSIDE",
+        "code": "????",
+        "id": "FERNSIDE"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.588048983512294, 45.326740161148116]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "FINDLAY CREEK / ODYSSEY",
+        "code": "????",
+        "id": "ODYSSEY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.588038346764804, 45.322623206039268]
+      }
+    }
+  ]
+}

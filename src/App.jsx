@@ -3,6 +3,12 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./App.css";
 import Map, { Layer, Source } from "react-map-gl";
 import stops from "./stops.json";
+import additionalStops from "./additional_stops.json";
+
+const combinedStops = {
+  type: "FeatureCollection",
+  features: [...stops.features, ...additionalStops.features],
+};
 
 function Status(props) {
   const containerRef = useRef();
@@ -108,7 +114,7 @@ function App() {
         onClick={handleMapClick}
         interactiveLayerIds={["stops"]}
       >
-        <Source id="stops" type="geojson" data={stops}>
+        <Source id="stops" type="geojson" data={combinedStops}>
           <Layer
             id="stops"
             type="circle"

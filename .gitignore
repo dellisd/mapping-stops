@@ -25,3 +25,7 @@ dist-ssr
 
 scripts/google_transit.zip
 scripts/stops.json
+
+scripts/gtfs
+scripts/gtfs-out
+scripts/ncr.osm

@@ -2779,9 +2779,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mapping-stops@workspace:.":
+"mapping-stops@workspace:mapper":
   version: 0.0.0-use.local
-  resolution: "mapping-stops@workspace:."
+  resolution: "mapping-stops@workspace:mapper"
   dependencies:
     "@types/react": ^18.2.37
     "@types/react-dom": ^18.2.15
@@ -3460,6 +3460,12 @@ __metadata:
   checksum: 942f08783bf45e623d177c3b58701e463952b9388822d4f8aadf4e3b465141837ad7f8c85737f7709c2dd0063782c9ce528f71dd33ca6dc3a2d112991d6cc097
   languageName: node
   linkType: hard
+
+"root-workspace-0b6124@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root-workspace-0b6124@workspace:."
+  languageName: unknown
+  linkType: soft
 
 "run-parallel@npm:^1.1.9":
   version: 1.2.0

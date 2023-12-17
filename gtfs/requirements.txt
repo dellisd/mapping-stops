@@ -1,1 +1,2 @@
 partridge==1.1.2
+geojson==3.1.0

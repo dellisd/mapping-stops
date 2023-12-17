@@ -29,5 +29,5 @@ python generate_gtfs.py google_transit.zip ../routes
 ## Generate the Shapes
 
 ```shell
-pfaedle -x ncr.osm -D --write-graph [gtfs here]
+pfaedle -x ncr.osm -D --write-graph -o [output] [gtfs here]
 ```

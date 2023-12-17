@@ -10,7 +10,7 @@ from additional_stops import stops as additional_stops
 SERVICE_ID = "DUMMY_SERVICE"
 block = 101010
 
-out_path = "generated_gfts"
+out_path = "generated_gtfs"
 
 
 def make_route(name):

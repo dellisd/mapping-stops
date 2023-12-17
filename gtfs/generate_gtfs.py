@@ -5,9 +5,12 @@ import pathlib
 import shutil
 import sys
 import zipfile
+from additional_stops import stops as additional_stops
 
 SERVICE_ID = "DUMMY_SERVICE"
 block = 101010
+
+out_path = "generated_gfts"
 
 
 def make_route(name):
@@ -71,9 +74,9 @@ for entry in files:
     stop_times.extend(make_stop_times(
         pathlib.Path(sys.argv[2]) / entry, trip_id))
 
-if not os.path.isdir("gtfs"):
-    os.mkdir("gtfs")
-with open("gtfs/routes.txt", "w") as routes_file:
+if not os.path.isdir(out_path):
+    os.mkdir(out_path)
+with open(f"{out_path}/routes.txt", "w") as routes_file:
     writer = csv.DictWriter(routes_file, fieldnames=[
         "route_id",
         "route_short_name",
@@ -85,7 +88,7 @@ with open("gtfs/routes.txt", "w") as routes_file:
     writer.writeheader()
     writer.writerows(routes)
 
-with open("gtfs/trips.txt", "w") as trips_file:
+with open(f"{out_path}/trips.txt", "w") as trips_file:
     writer = csv.DictWriter(trips_file, fieldnames=[
         "route_id",
         "service_id",
@@ -97,7 +100,7 @@ with open("gtfs/trips.txt", "w") as trips_file:
     writer.writeheader()
     writer.writerows(trips)
 
-with open("gtfs/stop_times.txt", "w") as stop_times_file:
+with open(f"{out_path}/stop_times.txt", "w") as stop_times_file:
     writer = csv.DictWriter(stop_times_file, fieldnames=[
         "trip_id",
         "arrival_time",
@@ -110,7 +113,7 @@ with open("gtfs/stop_times.txt", "w") as stop_times_file:
     writer.writeheader()
     writer.writerows(stop_times)
 
-with open("gtfs/calendar.txt", "w") as calendar_file:
+with open(f"{out_path}/calendar.txt", "w") as calendar_file:
     calendar_file.writelines([
         "service_id,monday,tuesday,wednesday,thursday,friday,saturday,start_date,end_date",
         f"{SERVICE_ID},1,1,1,1,1,1,1,20230101,20241212"
@@ -121,28 +124,44 @@ with open("gtfs/calendar.txt", "w") as calendar_file:
 with zipfile.ZipFile(sys.argv[1], "r") as gtfs_archive:
     with io.TextIOWrapper(gtfs_archive.open("stops.txt")) as stops_file:
         original_data = csv.DictReader(stops_file)
-        with open("additional_stops.txt") as additional_file:
-            additional_data = csv.DictReader(additional_file)
+        additional_data = []
+        for stop_id, stop_name, lat, lon in additional_stops:
+            additional_data.append({
+                'stop_id': stop_id,
+                'stop_code': '0000',
+                'stop_name': stop_name,
+                'stop_desc': '',
+                'stop_lat': lat,
+                'stop_lon': lon,
+                'zone_id': None,
+                "stop_url": None,
+                "location_type": 0,
+                "parent_station": None,
+                "stop_timezone": None,
+                "wheelchair_boarding": 0,
+                "platform_code": None,
+                "level_id": None,
+            })
 
-            with open("gtfs/stops.txt", "w") as stops_file:
-                writer = csv.DictWriter(stops_file, fieldnames=[
-                    "stop_id",
-                    "stop_code",
-                    "stop_name",
-                    "stop_desc",
-                    "stop_lat",
-                    "stop_lon",
-                    "zone_id",
-                    "stop_url",
-                    "location_type",
-                    "parent_station",
-                    "stop_timezone",
-                    "wheelchair_boarding",
-                    "platform_code",
-                    "level_id",
-                ])
-                writer.writeheader()
-                writer.writerows(original_data)
-                writer.writerows(additional_data)
+        with open(f"{out_path}/stops.txt", "w") as stops_file:
+            writer = csv.DictWriter(stops_file, fieldnames=[
+                "stop_id",
+                "stop_code",
+                "stop_name",
+                "stop_desc",
+                "stop_lat",
+                "stop_lon",
+                "zone_id",
+                "stop_url",
+                "location_type",
+                "parent_station",
+                "stop_timezone",
+                "wheelchair_boarding",
+                "platform_code",
+                "level_id",
+            ])
+            writer.writeheader()
+            writer.writerows(original_data)
+            writer.writerows(additional_data)
 
-    gtfs_archive.extract("agency.txt", "gtfs")
+    gtfs_archive.extract("agency.txt", out_path)

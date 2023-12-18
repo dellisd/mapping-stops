@@ -29,5 +29,22 @@ python generate_gtfs.py google_transit.zip ../routes
 ## Generate the Shapes
 
 ```shell
-pfaedle -x ncr.osm -D --write-graph -o [output] [gtfs here]
+pfaedle -x ncr.osm -D -o [output] [gtfs here]
+```
+
+## Processing Flow
+
+```shell
+# Clean input GTFS (input: google_transit.zip, output: cleaned_gtfs.zip)
+python clean.py
+
+# Generate custom GTFS
+python generate_gtfs2.py ../routes cleaned_gtfs.zip
+
+# Generate new shapes
+pfaedle -x ncr.osm -D -o new_gtfs test.zip
+
+# Convert the pfaedle output into a geojson file
+python gtfs_to_geojson.py new_gtfs new.json new
+# Copy the json file into the web app project!
 ```

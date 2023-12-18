@@ -11,3 +11,10 @@ pip-selfcheck.json
 
 *.zip
 generated_gtfs/
+
+new_gtfs
+old_gtfs
+new.json
+old.json
+
+ncr.osm

@@ -5,9 +5,7 @@ from collections import defaultdict
 gtfs_path = "google_transit.zip"
 gtfs_outpath = "cleaned_gtfs.zip"
 
-date, service_ids = ptg.read_busiest_date(gtfs_path)
-view = {'trips.txt': {'service_id': service_ids}, }
-feed = ptg.load_feed(gtfs_path, view)
+feed = ptg.load_raw_feed(gtfs_path)
 
 # print(feed.trips.__class__)
 
@@ -57,4 +55,7 @@ output_view = {
     'stop_times.txt': {'trip_id': trip_ids_set}
 }
 
-ptg.extract_feed(gtfs_path, gtfs_outpath, output_view)
+feed.set("trips.txt", feed.trips.loc[feed.trips['trip_id'].isin(trip_ids_set)])
+feed.set("stop_times.txt", feed.stop_times.loc[feed.stop_times['trip_id'].isin(trip_ids_set)])
+
+ptg.writers.write_feed_dangerously(feed, "cleaned_gtfs.zip")

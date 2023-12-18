@@ -1,0 +1,28 @@
+{
+  "changesets": {
+    "new-41": {
+      "oldRoutes": ["46-349", "140-349"],
+      "newRoutes": ["41-new"],
+      "description": "Routes 46 and 140 are combined to create a new Frequent Route 41"
+    }
+  },
+  "oldRoutes": [
+    {
+      "id": "46-349",
+      "name": "46 Billings Bridge — Hurdman",
+      "changeset": "new-41"
+    },
+    {
+      "id": "140-349",
+      "name": "140 Billings Bridge — Herongate",
+      "changeset": "new-41"
+    }
+  ],
+  "newRoutes": [
+    {
+      "id": "41-new",
+      "name": "41 Billings Bridge — St-Laurent via Elmvale",
+      "changeset": "new-41"
+    }
+  ]
+}

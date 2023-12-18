@@ -15,10 +15,20 @@ _colors = {
     "frequent": "#F68E1D",
     "rapid": "#0074BF",
     "connexion": "#9B5BA4",
+    "line1": "#D62937",
+    "line2": "#76BE43",
+    "line4": "#01A1DD",
 }
 
 
 def route_color(route_number, mode="old"):
+    if route_number == "1":
+        return _colors["line1"]
+    elif route_number == "2":
+        return _colors["line2"]
+    elif route_number == "4":
+        return _colors["line4"]
+
     if mode == "old":
         if route_number in _old_frequent:
             return _colors["frequent"]

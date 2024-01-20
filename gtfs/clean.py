@@ -29,6 +29,12 @@ print("Counting patterns by route")
 patterns_by_route = defaultdict(list)
 for pattern, trip_ids in trip_ids_by_pattern.items():
     trip = feed.trips.loc[feed.trips['trip_id'] == trip_ids[0]].iloc[0]
+    # Skip school and shopper routes which ar ethe 300 and 600 routes
+    route_id = trip['route_id']
+    route_number = route_id.split('-')[0]
+    if len(route_number) == 3 and route_number[0] in "36":
+        continue
+
     patterns_by_route[(trip['route_id'], trip['direction_id'])].append(pattern)
 print(patterns_by_route)
 

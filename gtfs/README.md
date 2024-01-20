@@ -15,6 +15,9 @@ osmium merge ontario-latest.osm.pbf quebec-latest.osm.pbf -o merged.osm.pbf
 
 # Extract the National Capital Region
 osmium extract -b -76.2616,45.1249,-75.1726,45.6620 merged.osm.pbf -o ncr.osm.pbf
+
+# Extract an XML file from the PBF
+osmium cat ncr.osm.pbf -o ncr.osm
 ```
 
 ## Generate the custom GTFS

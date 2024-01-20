@@ -19,6 +19,7 @@ const ComparisonMap = (props) => {
             "line-width": 2,
           }}
           layout={{}}
+          filter={["in", ["get", "route_id"], ["literal", props.routeIds ?? []]]}
         />
       </Source>
     </Map>
